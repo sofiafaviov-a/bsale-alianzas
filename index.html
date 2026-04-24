@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bsale Alianzas — Kit Comercial</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --orange: #FF5C1A;
+    --orange-pale: #FFF0EA;
+    --orange-mid: #FF7A40;
+    --navy: #222931;
+    --navy-mid: #363F4A;
+    --blue: #2068C5;
+    --blue-pale: #EAF1FB;
+    --gray-bg: #F5F7FA;
+    --gray-line: #E4E8EE;
+    --gray-mid: #6A788A;
+    --white: #FFFFFF;
+    --text: #363F4A;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--gray-bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--white);
+    border-bottom: 3px solid var(--orange);
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(34,41,49,0.07);
+  }
+
+  .logo-area { display: flex; align-items: center; gap: 14px; }
+
+  .logo-svg {
+    height: 36px;
+    width: auto;
+  }
+
+  .divider-v {
+    width: 1.5px;
+    height: 28px;
+    background: var(--gray-line);
+    border-radius: 2px;
+  }
+
+  .header-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+  }
+
+  .header-pill {
+    background: var(--orange-pale);
+    color: var(--orange);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    border: 1px solid rgba(255,92,26,0.22);
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 64px 48px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(255,92,26,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 200px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(32,104,197,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,92,26,0.15);
+    border: 1px solid rgba(255,92,26,0.3);
+    color: #FF8A5C;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+
+  .hero-badge-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--orange);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  .hero-title {
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-title span { color: var(--orange); }
+
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    max-width: 480px;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 36px;
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .stat-num {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--white);
+  }
+
+  .stat-num span { color: var(--orange); }
+
+  .stat-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* GRID */
+  .grid-section {
+    padding: 52px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 6px;
+  }
+
+  .section-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  /* CARD */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1.5px solid var(--gray-line);
+    padding: 32px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.22s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--card-accent, var(--orange));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.22s ease;
+  }
+
+  .card:hover {
+    border-color: transparent;
+    box-shadow: 0 8px 40px rgba(34,41,49,0.12);
+    transform: translateY(-3px);
+  }
+
+  .card:hover::before { transform: scaleX(1); }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .card-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background: var(--icon-bg, var(--orange-pale));
+    flex-shrink: 0;
+  }
+
+  .card-badge {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    background: var(--badge-bg, var(--orange-pale));
+    color: var(--badge-color, var(--orange));
+    border: 1px solid var(--badge-border, rgba(255,92,26,0.2));
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1.2;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: var(--gray-mid);
+    line-height: 1.65;
+    font-weight: 500;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid var(--gray-line);
+    margin-top: auto;
+  }
+
+  .card-cta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--card-accent, var(--orange));
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .card-cta svg {
+    transition: transform 0.2s ease;
+  }
+
+  .card:hover .card-cta svg {
+    transform: translateX(4px);
+  }
+
+  .card-filename {
+    font-size: 9px;
+    color: var(--gray-line);
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-family: monospace;
+  }
+
+  /* INSTRUCCIONES */
+  .instructions {
+    background: var(--navy);
+    margin: 0 48px 52px;
+    border-radius: 16px;
+    padding: 32px 36px;
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+    max-width: 1004px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inst-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(255,92,26,0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+  }
+
+  .inst-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  .inst-steps {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .inst-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 500;
+    line-height: 1.5;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .step-num {
+    width: 18px;
+    height: 18px;
+    background: var(--orange);
+    border-radius: 50%;
+    font-size: 9px;
+    font-weight: 800;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 28px 48px 40px;
+    font-size: 10px;
+    color: var(--gray-mid);
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    border-top: 1px solid var(--gray-line);
+  }
+
+  .footer span { color: var(--orange); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="logo-area">
+    <svg class="logo-svg" viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <text x="0" y="24" font-family="Montserrat, sans-serif" font-weight="900" font-size="26" fill="#FF5C1A">bsale</text>
+    </svg>
+    <div class="divider-v"></div>
+    <span class="header-label">Kit Comercial · Alianzas</span>
+  </div>
+  <div class="header-pill">📁 4 One Pagers</div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    Kit Comercial Activo
+  </div>
+  <h1 class="hero-title">Bsale <span>Alianzas</span><br>One Pagers</h1>
+  <p class="hero-sub">Materiales comerciales listos para compartir con prospectos y partners estratégicos. Cada documento está optimizado para abrir conversaciones de alianza.</p>
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-num"><span>4</span></div>
+      <div class="stat-label">Documentos</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">Listos para enviar</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num"><span>·</span> HTML</div>
+      <div class="stat-label">Formato nativo</div>
+    </div>
+  </div>
+</section>
+
+<!-- CARDS -->
+<div class="grid-section">
+  <p class="section-label">Materiales disponibles</p>
+  <h2 class="section-title">Selecciona un one pager para abrirlo</h2>
+
+  <div class="cards-grid">
+
+    <!-- Hardware -->
+    <a class="card" href="onepage-hardware__1_.html" target="_blank"
+       style="--card-accent: #FF5C1A; --icon-bg: #FFF0EA; --badge-bg: #FFF0EA; --badge-color: #FF5C1A; --badge-border: rgba(255,92,26,0.2);">
+      <div class="card-top">
+        <div class="card-icon">🖨️</div>
+        <div class="card-badge">Hardware</div>
+      </div>
+      <div>
+        <div class="card-title">Hardware</div>
+        <p class="card-desc">Propuesta de alianza para fabricantes y distribuidores de hardware TPV, impresoras fiscales y periféricos de punto de venta integrados con Bsale.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-cta">
+          Abrir one pager
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <span class="card-filename">onepage-hardware.html</span>
+      </div>
+    </a>
+
+    <!-- Marketplaces -->
+    <a class="card" href="onepage-marketplaces.html" target="_blank"
+       style="--card-accent: #2068C5; --icon-bg: #EAF1FB; --badge-bg: #EAF1FB; --badge-color: #2068C5; --badge-border: rgba(32,104,197,0.2);">
+      <div class="card-top">
+        <div class="card-icon">🛒</div>
+        <div class="card-badge">Marketplaces</div>
+      </div>
+      <div>
+        <div class="card-title">Marketplaces</div>
+        <p class="card-desc">Propuesta para plataformas de ecommerce y marketplaces que quieran integrar gestión de inventario, ventas y facturación con Bsale.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-cta">
+          Abrir one pager
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <span class="card-filename">onepage-marketplaces.html</span>
+      </div>
+    </a>
+
+    <!-- Medios de Pago -->
+    <a class="card" href="onepage-medios-de-pago.html" target="_blank"
+       style="--card-accent: #16A34A; --icon-bg: #DCFCE7; --badge-bg: #DCFCE7; --badge-color: #16A34A; --badge-border: rgba(22,163,74,0.2);">
+      <div class="card-top">
+        <div class="card-icon">💳</div>
+        <div class="card-badge">Medios de Pago</div>
+      </div>
+      <div>
+        <div class="card-title">Medios de Pago</div>
+        <p class="card-desc">Propuesta para procesadores de pago, pasarelas y fintechs que busquen integrarse con el ecosistema de ventas y facturación de Bsale.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-cta">
+          Abrir one pager
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <span class="card-filename">onepage-medios-de-pago.html</span>
+      </div>
+    </a>
+
+    <!-- Otras Alianzas -->
+    <a class="card" href="onepage-otras-alianzas__1_.html" target="_blank"
+       style="--card-accent: #7C3AED; --icon-bg: #EDE9FE; --badge-bg: #EDE9FE; --badge-color: #7C3AED; --badge-border: rgba(124,58,237,0.2);">
+      <div class="card-top">
+        <div class="card-icon">🤝</div>
+        <div class="card-badge">Alianzas</div>
+      </div>
+      <div>
+        <div class="card-title">Otras Alianzas</div>
+        <p class="card-desc">Propuesta para socios estratégicos, consultoras, integradores y cualquier empresa que quiera potenciar su oferta con la plataforma Bsale.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-cta">
+          Abrir one pager
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+        <span class="card-filename">onepage-otras-alianzas.html</span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<!-- INSTRUCCIONES USO -->
+<div style="padding: 0 48px 52px; max-width: 1100px; margin: 0 auto;">
+  <div class="instructions">
+    <div class="inst-icon">💡</div>
+    <div style="flex: 1;">
+      <div class="inst-title">Cómo usar este kit en Drive</div>
+      <div class="inst-steps">
+        <div class="inst-step">
+          <div class="step-num">1</div>
+          <span>Sube <strong style="color:white">todos los archivos HTML</strong> (índice + one pagers) a una carpeta en Google Drive</span>
+        </div>
+        <div class="inst-step">
+          <div class="step-num">2</div>
+          <span>Abre el índice con <strong style="color:white">doble clic</strong> → Drive preview → botón "Abrir en nueva pestaña"</span>
+        </div>
+        <div class="inst-step">
+          <div class="step-num">3</div>
+          <span>Para enviar a un cliente: <strong style="color:white">comparte el archivo individual</strong> directamente desde Drive</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span>Bsale</span> · Kit Comercial Alianzas · Uso interno y comercial autorizado
+</footer>
+
+</body>
+</html>
